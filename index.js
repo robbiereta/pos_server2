@@ -6,7 +6,7 @@ var express = require("express"),
   io = require("socket.io")(server),
   liveCart = [];
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 8081;
 
 console.log("Real time POS running");
 console.log("Server started");
@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.all("/*", function(req, res, next) {
   // CORS headers
+  res.header("Access-Control-Allow-Origin", "*"); // restrict it to the required domain
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
   // Set custom headers for CORS
   res.header(
